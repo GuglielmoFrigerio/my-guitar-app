@@ -70,12 +70,16 @@ std::tuple<int, int> FretComponent::getWidthAndStart(int fretNumber, int numberO
 void FretComponent::setActive()
 {
     m_active = true;
+
+    const juce::MessageManagerLock mmLock;
     repaint();
 }
 
 void FretComponent::resetActive()
 {
     m_active = false;
+
+    const juce::MessageManagerLock mmLock;
     repaint();
 }
 

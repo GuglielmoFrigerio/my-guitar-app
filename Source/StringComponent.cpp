@@ -13,6 +13,7 @@
 
 //==============================================================================
 StringComponent::StringComponent(int fretCount, int startingMidiNoteNumber)
+    : m_startingMidiNoteNumber(startingMidiNoteNumber)
 {
     for (auto index = 1; index <= fretCount; ++index) {
         auto name = std::to_string(index);
@@ -42,5 +43,21 @@ void StringComponent::resized()
         auto fretRect = localBounds.removeFromLeft(width);
         auto& fret = m_frets[index - 1];
         fret->setBounds(fretRect);
+    }
+}
+
+void StringComponent::setActive(int midiNoteNumber)
+{
+    auto index = midiNoteNumber - m_startingMidiNoteNumber;
+    if (index < m_frets.size()) {
+        m_frets[index]->setActive();
+    }
+}
+
+void StringComponent::resetActive(int midiNoteNumber)
+{
+    auto index = midiNoteNumber - m_startingMidiNoteNumber;
+    if (index < m_frets.size()) {
+        m_frets[index]->resetActive();
     }
 }

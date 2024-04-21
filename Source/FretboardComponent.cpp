@@ -45,8 +45,16 @@ void FretboardComponent::resized()
 
 void FretboardComponent::onNoteOn(int channel, int noteNumber, std::uint8_t velocity)
 {
+    auto index = channel - 1;
+    if (index < 6) {
+        m_strings[index]->setActive(noteNumber);
+    }
 }
 
 void FretboardComponent::onNoteOff(int channel, int noteNumber, std::uint8_t velocity)
 {
+    auto index = channel - 1;
+    if (index < 6) {
+        m_strings[index]->resetActive(noteNumber);
+    }
 }

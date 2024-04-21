@@ -24,8 +24,11 @@ public:
 
     void paint (juce::Graphics&) override;
     void resized() override;
+    void setActive(int midiNoteNumber);
+    void resetActive(int midiNoteNumber);
 
 private:
+    int m_startingMidiNoteNumber;
     std::vector<std::unique_ptr<FretComponent>> m_frets;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StringComponent)
 };

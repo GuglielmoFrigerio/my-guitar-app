@@ -17,8 +17,8 @@ void TriplePlayConnect::handleIncomingMidiMessage(juce::MidiInput* source, const
     if (midiInputCallbackPtr != nullptr)
         midiInputCallbackPtr->handleIncomingMidiMessage(source, message);
 
-    auto desc = message.getDescription();
-    DBG("midi event: " << desc);
+    //auto desc = message.getDescription();
+    //DBG("midi event: " << desc);
 
     if (message.isNoteOn()) {
         auto channel = message.getChannel();
@@ -26,14 +26,14 @@ void TriplePlayConnect::handleIncomingMidiMessage(juce::MidiInput* source, const
         auto velocity = message.getVelocity();
         m_pMidiInputTarget->onNoteOn(channel, noteNumber, velocity);
 
-        //DBG("note on. channel " << channel << " note: " << noteNumber << " velocity: " << velocity);
+        DBG("note on. channel " << channel << " note: " << noteNumber << " velocity: " << velocity);
     }
     else if (message.isNoteOff()) {
         auto channel = message.getChannel();
         auto noteNumber = message.getNoteNumber();
         auto velocity = message.getVelocity();
         m_pMidiInputTarget->onNoteOff(channel, noteNumber, velocity);
-        //DBG("note off. channel " << channel << " note: " << noteNumber << " velocity: " << velocity);
+        DBG("note off. channel " << channel << " note: " << noteNumber << " velocity: " << velocity);
     }
     else if (message.isController()) {
         auto controllerNumber = message.getControllerNumber();
