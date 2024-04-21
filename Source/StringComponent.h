@@ -19,7 +19,7 @@
 class StringComponent  : public juce::Component
 {
 public:
-    StringComponent(int fretCount);
+    StringComponent(int fretCount, int startingMidiNoteNumber);
     ~StringComponent() override;
 
     void paint (juce::Graphics&) override;

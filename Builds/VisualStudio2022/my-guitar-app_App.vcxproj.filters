@@ -595,6 +595,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\TriplePlayConnect.cpp">
+      <Filter>my-guitar-app\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\FretboardComponent.cpp">
       <Filter>my-guitar-app\Source</Filter>
     </ClCompile>
@@ -602,9 +605,6 @@
       <Filter>my-guitar-app\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\StringComponent.cpp">
-      <Filter>my-guitar-app\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\GraphicTestComponent.cpp">
       <Filter>my-guitar-app\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Main.cpp">
@@ -3072,6 +3072,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\TriplePlayConnect.h">
+      <Filter>my-guitar-app\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\IMidiInputTarget.h">
+      <Filter>my-guitar-app\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\FretboardComponent.h">
       <Filter>my-guitar-app\Source</Filter>
     </ClInclude>
@@ -3079,9 +3085,6 @@
       <Filter>my-guitar-app\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\StringComponent.h">
-      <Filter>my-guitar-app\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GraphicTestComponent.h">
       <Filter>my-guitar-app\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MainComponent.h">

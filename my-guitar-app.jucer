@@ -4,6 +4,12 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="tbYDTj" name="my-guitar-app">
     <GROUP id="{FF143FE6-BEF4-F2F6-D778-64F05B928D93}" name="Source">
+      <FILE id="cj3VdR" name="TriplePlayConnect.cpp" compile="1" resource="0"
+            file="Source/TriplePlayConnect.cpp"/>
+      <FILE id="eBP3TV" name="TriplePlayConnect.h" compile="0" resource="0"
+            file="Source/TriplePlayConnect.h"/>
+      <FILE id="Cbh0jt" name="IMidiInputTarget.h" compile="0" resource="0"
+            file="Source/IMidiInputTarget.h"/>
       <FILE id="vX4Ba7" name="FretboardComponent.cpp" compile="1" resource="0"
             file="Source/FretboardComponent.cpp"/>
       <FILE id="Sx8wx7" name="FretboardComponent.h" compile="0" resource="0"
@@ -15,10 +21,6 @@
             file="Source/StringComponent.cpp"/>
       <FILE id="hSE1YI" name="StringComponent.h" compile="0" resource="0"
             file="Source/StringComponent.h"/>
-      <FILE id="pS67AC" name="GraphicTestComponent.cpp" compile="1" resource="0"
-            file="Source/GraphicTestComponent.cpp"/>
-      <FILE id="E3YJZW" name="GraphicTestComponent.h" compile="0" resource="0"
-            file="Source/GraphicTestComponent.h"/>
       <FILE id="UGPMYq" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="GREUQb" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="rD7mFb" name="MainComponent.cpp" compile="1" resource="0"

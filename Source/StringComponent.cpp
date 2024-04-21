@@ -12,11 +12,12 @@
 #include "StringComponent.h"
 
 //==============================================================================
-StringComponent::StringComponent(int fretCount)
+StringComponent::StringComponent(int fretCount, int startingMidiNoteNumber)
 {
     for (auto index = 1; index <= fretCount; ++index) {
         auto name = std::to_string(index);
-        m_frets.push_back(std::make_unique<FretComponent>(name.c_str()));
+        m_frets.push_back(std::make_unique<FretComponent>(name.c_str(), startingMidiNoteNumber));
+        startingMidiNoteNumber++;
     }
 
     for (auto& fret : m_frets) {

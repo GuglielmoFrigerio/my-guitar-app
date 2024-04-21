@@ -16,10 +16,12 @@ FretboardComponent::FretboardComponent()
 {
     auto numberOfFrets = 24;
     for (auto index = 0; index < 6; ++index) {
-        auto stringComponentPtr = std::make_unique<StringComponent>(numberOfFrets);
+        auto stringComponentPtr = std::make_unique<StringComponent>(numberOfFrets, m_startingMidiNoteNumbers[index]);
         addAndMakeVisible(*stringComponentPtr);
         m_strings.push_back(std::move(stringComponentPtr));
     }
+
+    m_triplePlayConnectPtr = std::make_unique<TriplePlayConnect>(this);
 }
 
 FretboardComponent::~FretboardComponent()
@@ -39,4 +41,12 @@ void FretboardComponent::resized()
         auto rect = localBounds.removeFromTop(stringHeight);
         stringCompPtr->setBounds(rect);
     }
+}
+
+void FretboardComponent::onNoteOn(int channel, int noteNumber, std::uint8_t velocity)
+{
+}
+
+void FretboardComponent::onNoteOff(int channel, int noteNumber, std::uint8_t velocity)
+{
 }

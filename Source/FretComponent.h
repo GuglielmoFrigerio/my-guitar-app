@@ -18,7 +18,7 @@
 class FretComponent  : public juce::Component
 {
 public:
-    FretComponent(const char *name);
+    FretComponent(const char *name, int midiNoteNumber);
     ~FretComponent() override;
 
     void paint (juce::Graphics&) override;
@@ -26,9 +26,15 @@ public:
 
     static std::tuple<int, int> getWidthAndStart(int fretNumber, int numberOfFrets, float componentWidth);
 
+    void setActive();
+    void resetActive();
+
 private:
     static float getStringLength(int fretNumber, float componentWidth);
 
+private:    // fields
+    int m_midiNoteNumber;
     juce::String m_name;
+    bool m_active = false;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FretComponent)
 };

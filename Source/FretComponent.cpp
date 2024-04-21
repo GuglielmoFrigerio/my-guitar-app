@@ -12,8 +12,8 @@
 #include "FretComponent.h"
 
 //==============================================================================
-FretComponent::FretComponent(const char* name)
-    :   m_name(name)
+FretComponent::FretComponent(const char* name, int midiNoteNumber)
+    :   m_name(name), m_midiNoteNumber(midiNoteNumber)
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
@@ -33,14 +33,20 @@ void FretComponent::paint (juce::Graphics& g)
        drawing code..
     */
 
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
+    auto defaultColor = getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId);
+
+    auto backgroundColor = m_active ? juce::Colours::lightcoral : juce::Colours::white;
+
+    g.fillAll (backgroundColor);
 
     g.setColour (juce::Colours::red);
     g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
 
-    g.setColour (juce::Colours::white);
+    auto text = std::to_string(m_midiNoteNumber);
+
+    g.setColour (juce::Colours::blue);
     g.setFont (14.0f);
-    g.drawText (m_name, getLocalBounds(),
+    g.drawText (text, getLocalBounds(),
                 juce::Justification::centred, true);   // draw some placeholder text
 }
 
@@ -59,6 +65,18 @@ std::tuple<int, int> FretComponent::getWidthAndStart(int fretNumber, int numberO
     auto firstLength = getStringLength(fretNumber - 1, realLength);
     auto secondLength = getStringLength(fretNumber, realLength);
     return { int(firstLength - secondLength), int (realLength - firstLength) };
+}
+
+void FretComponent::setActive()
+{
+    m_active = true;
+    repaint();
+}
+
+void FretComponent::resetActive()
+{
+    m_active = false;
+    repaint();
 }
 
 float FretComponent::getStringLength(int fretNumber, float componentWidth)

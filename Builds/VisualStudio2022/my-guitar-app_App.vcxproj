@@ -141,10 +141,10 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\TriplePlayConnect.cpp"/>
     <ClCompile Include="..\..\Source\FretboardComponent.cpp"/>
     <ClCompile Include="..\..\Source\FretComponent.cpp"/>
     <ClCompile Include="..\..\Source\StringComponent.cpp"/>
-    <ClCompile Include="..\..\Source\GraphicTestComponent.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
     <ClCompile Include="..\..\..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.cpp">
@@ -2442,10 +2442,11 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\TriplePlayConnect.h"/>
+    <ClInclude Include="..\..\Source\IMidiInputTarget.h"/>
     <ClInclude Include="..\..\Source\FretboardComponent.h"/>
     <ClInclude Include="..\..\Source\FretComponent.h"/>
     <ClInclude Include="..\..\Source\StringComponent.h"/>
-    <ClInclude Include="..\..\Source\GraphicTestComponent.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="..\..\..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
     <ClInclude Include="..\..\..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h"/>
