@@ -39,8 +39,19 @@ void FretComponent::paint (juce::Graphics& g)
 
     g.fillAll (backgroundColor);
 
-    g.setColour (juce::Colours::red);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+    auto localBounds = getLocalBounds();
+    auto width = float(localBounds.getWidth());
+    auto height = float(localBounds.getHeight());
+
+    g.setColour (juce::Colours::brown);
+    juce::Line<float> fretLine(juce::Point<float>(width, 0), juce::Point<float>(width, height));
+    g.drawLine(fretLine, m_fretTickness);
+
+    // draw the string
+    g.setColour(juce::Colours::black);
+    auto midPoint = localBounds.getHeight() / 2.0f;
+    juce::Line<float> line(juce::Point<float>(0, midPoint), juce::Point<float>(float(width), midPoint));
+    g.drawLine(line, 2.0f);
 
     auto text = std::to_string(m_midiNoteNumber);
 

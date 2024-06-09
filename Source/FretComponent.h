@@ -36,5 +36,6 @@ private:    // fields
     int m_midiNoteNumber;
     juce::String m_name;
     bool m_active = false;
+    float m_fretTickness = 10.0f;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FretComponent)
 };
