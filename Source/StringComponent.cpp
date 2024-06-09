@@ -30,7 +30,7 @@ StringComponent::~StringComponent()
 {
 }
 
-void StringComponent::paint (juce::Graphics& g)
+void StringComponent::paint (juce::Graphics& /* g */)
 {
 }
 
@@ -39,7 +39,7 @@ void StringComponent::resized()
     auto localBounds = getLocalBounds();
     auto initialWidth = localBounds.getWidth();
     for (auto index = 1; index <= m_frets.size(); ++index) {
-        auto [width, start] = FretComponent::getWidthAndStart(index, m_frets.size(), initialWidth);
+        auto [width, start] = FretComponent::getWidthAndStart(index, int(m_frets.size()), float (initialWidth));
         auto fretRect = localBounds.removeFromLeft(width);
         auto& fret = m_frets[index - 1];
         fret->setBounds(fretRect);

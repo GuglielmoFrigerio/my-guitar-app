@@ -28,7 +28,7 @@ FretboardComponent::~FretboardComponent()
 {
 }
 
-void FretboardComponent::paint (juce::Graphics& g)
+void FretboardComponent::paint (juce::Graphics& /* g */)
 {
 }
 
@@ -36,14 +36,19 @@ void FretboardComponent::resized()
 {
     auto localBounds = getLocalBounds();
 
-    auto stringHeight = localBounds.getHeight() / m_strings.size();
+    auto stringHeight = localBounds.getHeight() / int(m_strings.size());
     for (auto& stringCompPtr : m_strings) {
         auto rect = localBounds.removeFromTop(stringHeight);
         stringCompPtr->setBounds(rect);
     }
 }
 
-void FretboardComponent::onNoteOn(int channel, int noteNumber, std::uint8_t velocity)
+int FretboardComponent::getIdealHeight(int width) const
+{
+    return int(width / m_aspectRatio);
+}
+
+void FretboardComponent::onNoteOn(int channel, int noteNumber, std::uint8_t /* velocity */)
 {
     auto index = channel - 1;
     if (index < 6) {
@@ -51,7 +56,7 @@ void FretboardComponent::onNoteOn(int channel, int noteNumber, std::uint8_t velo
     }
 }
 
-void FretboardComponent::onNoteOff(int channel, int noteNumber, std::uint8_t velocity)
+void FretboardComponent::onNoteOff(int channel, int noteNumber, std::uint8_t /* velocity */)
 {
     auto index = channel - 1;
     if (index < 6) {

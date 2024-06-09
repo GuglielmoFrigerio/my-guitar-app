@@ -35,10 +35,10 @@ void TriplePlayConnect::handleIncomingMidiMessage(juce::MidiInput* source, const
         m_pMidiInputTarget->onNoteOff(channel, noteNumber, velocity);
         DBG("note off. channel " << channel << " note: " << noteNumber << " velocity: " << velocity);
     }
-    else if (message.isController()) {
-        auto controllerNumber = message.getControllerNumber();
-        auto controllerValue = message.getControllerValue();
-    }
+    //else if (message.isController()) {
+    //    auto controllerNumber = message.getControllerNumber();
+    //    auto controllerValue = message.getControllerValue();
+    //}
     else if (message.isProgramChange()) {
 
         auto pcn = message.getProgramChangeNumber();

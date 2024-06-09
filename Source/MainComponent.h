@@ -26,7 +26,8 @@ public:
 
 private:
     FretboardComponent m_fretboardComponent;
-
+    int m_horizontalMargin = 10;
+    int m_verticalMargin = 10;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

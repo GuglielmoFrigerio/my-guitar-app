@@ -30,7 +30,7 @@ MainComponent::~MainComponent()
 }
 
 //==============================================================================
-void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
+void MainComponent::prepareToPlay (int /* samplesPerBlockExpected */, double /* sampleRate */)
 {
     // This function will be called when the audio device is started, or when
     // its settings (i.e. sample rate, block size, etc) are changed.
@@ -71,9 +71,19 @@ void MainComponent::paint (juce::Graphics& g)
 
 void MainComponent::resized()
 {
+    auto localBounds = getLocalBounds();
+    localBounds.removeFromTop(m_verticalMargin);
+    localBounds.removeFromBottom(m_verticalMargin);
+    localBounds.removeFromLeft(m_horizontalMargin);
+    localBounds.removeFromRight(m_horizontalMargin);
+
+    auto idealHeight = m_fretboardComponent.getIdealHeight(localBounds.getWidth());
+
+    auto upperBounds = localBounds.removeFromTop(localBounds.getHeight() - idealHeight);
+
     // This is called when the MainContentComponent is resized.
     // If you add any child components, this is where you should
     // update their positions.
-    m_fretboardComponent.setBounds(0, 0, getWidth(), getHeight());
+    m_fretboardComponent.setBounds(localBounds);
 
 }
