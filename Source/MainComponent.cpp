@@ -1,7 +1,8 @@
+#include "pch.h"
 #include "MainComponent.h"
 
 //==============================================================================
-MainComponent::MainComponent()
+MainComponent::MainComponent() : m_fretboardComponent(std::make_shared<WholeNoteNameFactory>())
 {
     // Make sure you set the size of the component after
     // you add any child components.

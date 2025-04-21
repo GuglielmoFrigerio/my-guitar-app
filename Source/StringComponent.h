@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include <JuceHeader.h>
+#include "NoteNameFactory.h"
 #include "FretComponent.h"
 
 //==============================================================================
@@ -19,7 +19,7 @@
 class StringComponent  : public juce::Component
 {
 public:
-    StringComponent(int fretCount, int startingMidiNoteNumber);
+    StringComponent(int fretCount, int startingMidiNoteNumber, std::shared_ptr<INoteNameFactory> noteNameFactoryPtr);
     ~StringComponent() override;
 
     void paint (juce::Graphics&) override;

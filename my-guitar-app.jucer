@@ -4,6 +4,12 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="tbYDTj" name="my-guitar-app">
     <GROUP id="{FF143FE6-BEF4-F2F6-D778-64F05B928D93}" name="Source">
+      <FILE id="BhZmu8" name="pch.h" compile="0" resource="0" file="Source/pch.h"/>
+      <FILE id="afCB92" name="NoteNameFactory.cpp" compile="1" resource="0"
+            file="Source/NoteNameFactory.cpp"/>
+      <FILE id="H0I1XZ" name="NoteNameFactory.h" compile="0" resource="0"
+            file="Source/NoteNameFactory.h"/>
+      <FILE id="nQ8QsH" name="Music.h" compile="0" resource="0" file="Source/Music.h"/>
       <FILE id="cj3VdR" name="TriplePlayConnect.cpp" compile="1" resource="0"
             file="Source/TriplePlayConnect.cpp"/>
       <FILE id="eBP3TV" name="TriplePlayConnect.h" compile="0" resource="0"
@@ -44,8 +50,10 @@
   <EXPORTFORMATS>
     <VS2022 targetFolder="Builds/VisualStudio2022">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="my-guitar-app"/>
-        <CONFIGURATION isDebug="0" name="Release" targetName="my-guitar-app"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="my-guitar-app" usePrecompiledHeaderFile="1"
+                       precompiledHeaderFile="Source\pch.h"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="my-guitar-app" usePrecompiledHeaderFile="1"
+                       precompiledHeaderFile="Source\pch.h"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../../../../JUCE/modules"/>

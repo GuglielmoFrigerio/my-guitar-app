@@ -8,12 +8,14 @@
   ==============================================================================
 */
 
-#include <JuceHeader.h>
+#include "pch.h"
 #include "FretComponent.h"
 
+float g_firstFretTickness = 10.0f;
+
 //==============================================================================
-FretComponent::FretComponent(const char* name, int midiNoteNumber)
-    :   m_name(name), m_midiNoteNumber(midiNoteNumber)
+FretComponent::FretComponent(const char* name, int midiNoteNumber, int fretNumber, std::shared_ptr<INoteNameFactory> noteNameFactoryPtr)
+    :   m_name(name), m_midiNoteNumber(midiNoteNumber), m_fretNumber(fretNumber), m_noteNameFactoryPtr(noteNameFactoryPtr)
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
@@ -26,16 +28,9 @@ FretComponent::~FretComponent()
 
 void FretComponent::paint (juce::Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
     auto defaultColor = getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId);
 
-    auto backgroundColor = m_active ? juce::Colours::lightcoral : juce::Colours::white;
+    auto backgroundColor = m_active ? juce::Colours::lightcoral : juce::Colours::lightsalmon;
 
     g.fillAll (backgroundColor);
 
@@ -43,22 +38,34 @@ void FretComponent::paint (juce::Graphics& g)
     auto width = float(localBounds.getWidth());
     auto height = float(localBounds.getHeight());
 
+    // draws the fret
+    auto fretTickness = (m_fretNumber == 1) ? g_firstFretTickness : m_fretTickness;
     g.setColour (juce::Colours::brown);
     juce::Line<float> fretLine(juce::Point<float>(width, 0), juce::Point<float>(width, height));
-    g.drawLine(fretLine, m_fretTickness);
+    g.drawLine(fretLine, fretTickness);
 
-    // draw the string
+    // draws the string
     g.setColour(juce::Colours::black);
     auto midPoint = localBounds.getHeight() / 2.0f;
     juce::Line<float> line(juce::Point<float>(0, midPoint), juce::Point<float>(float(width), midPoint));
     g.drawLine(line, 2.0f);
 
-    auto text = std::to_string(m_midiNoteNumber);
+    // draws circle
 
-    g.setColour (juce::Colours::blue);
-    g.setFont (14.0f);
-    g.drawText (text, getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
+    auto noteName = m_noteNameFactoryPtr->getNoteName(m_midiNoteNumber);
+
+    if (!noteName.empty()) {
+        float diameter = 20.0;
+        auto x = (localBounds.getWidth() - diameter) / 2;
+        auto y = (localBounds.getHeight() - diameter) / 2;
+        g.setColour(juce::Colours::white);
+        g.fillEllipse(x, y, diameter, diameter);
+
+        // draws fret name
+        g.setColour(juce::Colours::blue);
+        g.setFont(14.0f);
+        g.drawText(noteName, localBounds, juce::Justification::centred, true);   // draw some placeholder text
+    }
 }
 
 void FretComponent::resized()

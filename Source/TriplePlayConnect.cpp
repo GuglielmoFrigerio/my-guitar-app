@@ -8,7 +8,7 @@
   ==============================================================================
 */
 
-#include <JuceHeader.h>
+#include "pch.h"
 #include "TriplePlayConnect.h"
 
 void TriplePlayConnect::handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message)

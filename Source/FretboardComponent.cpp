@@ -8,15 +8,15 @@
   ==============================================================================
 */
 
-#include <JuceHeader.h>
+#include "pch.h"
 #include "FretboardComponent.h"
 
 //==============================================================================
-FretboardComponent::FretboardComponent()
+FretboardComponent::FretboardComponent(std::shared_ptr<INoteNameFactory> noteNameFactoryPtr)
 {
     auto numberOfFrets = 24;
     for (auto index = 0; index < 6; ++index) {
-        auto stringComponentPtr = std::make_unique<StringComponent>(numberOfFrets, m_startingMidiNoteNumbers[index]);
+        auto stringComponentPtr = std::make_unique<StringComponent>(numberOfFrets, m_startingMidiNoteNumbers[index], noteNameFactoryPtr);
         addAndMakeVisible(*stringComponentPtr);
         m_strings.push_back(std::move(stringComponentPtr));
     }

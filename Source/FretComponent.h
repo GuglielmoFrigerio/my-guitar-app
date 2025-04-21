@@ -9,16 +9,12 @@
 */
 
 #pragma once
+#include "NoteNameFactory.h"
 
-#include <JuceHeader.h>
-
-//==============================================================================
-/*
-*/
 class FretComponent  : public juce::Component
 {
 public:
-    FretComponent(const char *name, int midiNoteNumber);
+    FretComponent(const char *name, int midiNoteNumber, int fretNumber, std::shared_ptr<INoteNameFactory> noteNameFactoryPtr);
     ~FretComponent() override;
 
     void paint (juce::Graphics&) override;
@@ -33,9 +29,11 @@ private:
     static float getStringLength(int fretNumber, float componentWidth);
 
 private:    // fields
+    int m_fretNumber; // one based.
     int m_midiNoteNumber;
     juce::String m_name;
     bool m_active = false;
-    float m_fretTickness = 10.0f;
+    float m_fretTickness = 5.0f;
+    std::shared_ptr<INoteNameFactory> m_noteNameFactoryPtr;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FretComponent)
 };

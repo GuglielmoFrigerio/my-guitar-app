@@ -10,10 +10,10 @@
 
 #pragma once
 
-#include <JuceHeader.h>
 #include "StringComponent.h"
 #include "TriplePlayConnect.h"
 #include "IMidiInputTarget.h"
+#include "NoteNameFactory.h"
 
 //==============================================================================
 /*
@@ -21,7 +21,7 @@
 class FretboardComponent  : public juce::Component, public IMidiInputTarget
 {
 public:
-    FretboardComponent();
+    FretboardComponent(std::shared_ptr<INoteNameFactory> noteNameFactoryPtr);
     ~FretboardComponent() override;
 
     void paint (juce::Graphics&) override;
